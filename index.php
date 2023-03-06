@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $string = strip_tags($data['string']);
         $colored_string = color_foreign($string);
 
+        date_default_timezone_set('Europe/Moscow');
         $stmt = $conn->prepare('INSERT INTO history (string, markup, time_checked) VALUES (?, ?, ?)');
         $stmt->execute([$string, $colored_string, date('Y-m-d H:i:s')]);
 
